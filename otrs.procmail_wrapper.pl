@@ -84,12 +84,12 @@ print "External program called: $ExternalProgram\n";
 if ($tkt_count>=2) {
 	foreach my $tkt (@tkt_array) {
 		# iterate on subject to remove ticker other than $tkt
-		print "\nRemove Ticket other than Ticket-$tkt from Subject\n";
+		print "\nRemove Ticket other than $TicketHook$TicketHookDivider$tkt from Subject\n";
 		my $new_subj_header = $subj_header;
 		foreach my $tkt_to_be_removed (@tkt_array) {
 			if ($tkt_to_be_removed != $tkt) {
-				print "- removing Ticket-$tkt_to_be_removed from Subject\n";
-				my $tmp = $new_subj_header =~ s/Ticket-$tkt_to_be_removed//gr;
+				print "- removing $TicketHook$TicketHookDivider$tkt_to_be_removed from Subject\n";
+				my $tmp = $new_subj_header =~ s/$TicketHook$TicketHookDivider$tkt_to_be_removed//gr;
 				$new_subj_header = $tmp;
 			}
 		}
